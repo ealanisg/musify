@@ -1,38 +1,19 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-
+const winston = require("winston");
+const express = require("express");
+const config = require("config");
 const app = express();
 
-app.set('view engine', 'ejs');
+require("./startup/logging")();
+require("./startup/cors")(app);
+require("./startup/routes")(app);
+require("./startup/db")();
+require("./startup/config")();
+require("./startup/validation")();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+const port = process.env.PORT || config.get("port");
+const server = app.listen(port, () =>
+  // winston.info(`Listening on port ${port}...`)
+  console.log(`Listening on port ${port}...`)
+);
 
-// Connect to MongoDB
-mongoose
-  .connect(
-    'mongodb://mongo:27017/docker-node-mongo',
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
-
-const Item = require('./models/Item');
-
-app.get('/', (req, res) => {
-  Item.find()
-    .then(items => res.render('index', { items }))
-    .catch(err => res.status(404).json({ msg: 'No items found' }));
-});
-
-app.post('/item/add', (req, res) => {
-  const newItem = new Item({
-    name: req.body.name
-  });
-
-  newItem.save().then(item => res.redirect('/'));
-});
-
-const port = 3000;
-
-app.listen(port, () => console.log('Server running...'));
+module.exports = server;

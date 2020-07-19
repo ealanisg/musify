@@ -1,0 +1,6 @@
+{
+  "jwtPrivateKey": "unsecureKey",
+  "db": "mongodb://mongo:27017/musify_dev",
+  "port": "3000",
+  "requiresAuth": false
+}
