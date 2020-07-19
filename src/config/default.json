@@ -1,0 +1,13 @@
+{
+  "secretKey": "this is a secret key, right here",
+  "env": "Default",
+  "server": {
+    "name": "Musify API",
+    "version": "2.0.0",
+    "port": 3000
+  },
+  "database": {
+    "host": "mongodb://mongo:27017/musify_dev",
+    "dbname": "comenread"
+  }
+}
