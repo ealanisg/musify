@@ -1,0 +1,4 @@
+{
+  "jwtPrivateKey": "1234",
+  "db": "mongodb://mongo:27017/musify_tests_dev"
+}
