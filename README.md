@@ -1,16 +1,11 @@
-# Docker Node MongoDB Example
+# Musify
 
-> Simple example of development environment on Node/Mongo
+> Museografic catalogation software
 
 ## Quick Start
 
-```bash
-# Run in Docker
-./up.sh
-
-# Tear down
-./down.sh
-
-# To be able to edit files, add volume to compose file
-volumes: ['./:/usr/src/app']
+```
+Tools:
+Node
+MongoDb
 ```
