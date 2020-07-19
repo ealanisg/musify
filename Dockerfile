@@ -1,13 +1,6 @@
-FROM node:10
+FROM node:12.18-alpine
 
 WORKDIR /usr/src/app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
+ENV HOME /usr
+RUN chmod -R 757 /usr
 EXPOSE 3000
-
-CMD ["npm", "start"]

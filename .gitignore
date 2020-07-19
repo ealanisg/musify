@@ -1,1 +1,101 @@
+# phpstorm project files
+.idea
+
+# bower
+.bowerrc
+
+# Vagrant Files
+.vagrant
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# sublime text project / workspace files
+*.sublime-project
+*.sublime-workspace
+testsql.php
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer vendor dir
+/www/_protected/vendor/
+
+# sessions
+/www/_protected/runtime/session/sess_*
+/www/_protected/runtime/
+
+# images
+/images
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Generated files
+.idea/**/contentModel.xml
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# CMake
+cmake-build-*/
+
+# Mongo Explorer plugin
+.idea/**/mongoSettings.xml
+
+# File-based project format
+*.iws
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+# NodeJs Specific
 node_modules
+npm-debug.log
+yarn-error.log
+
+# SQL
+*.sql
+*.pgsql
+*.dump
+*.data
+*gii*
+*.log
+
+# Excel Files
+*.xlsx
+
+/.env
+/.vscode
+/data/**
+/docker/logs/**
+.DS_Store
+
+LICENSE

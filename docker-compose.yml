@@ -1,15 +1,23 @@
-version: '3'
+version: '3.4'
+
 services:
   app:
-    container_name: docker-node-mongo
-    restart: always
+    container_name: node
     build: .
+    user: $UID:$GID
     ports:
-      - '80:3000'
+      - '3000:3000'
     links:
       - mongo
+    tty: true
+    volumes:
+      - .:/usr/src/app
+      - ./node_modules:/usr/src/app/node_modules
   mongo:
     container_name: mongo
     image: mongo
+    user: $UID:$GID
     ports:
       - '27017:27017'
+    volumes:
+      - ./data/mongo:/data/db
