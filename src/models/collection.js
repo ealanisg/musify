@@ -1,5 +1,5 @@
-const Joi = require('joi');
 const _ = require("lodash");
+const Joi = require('joi');
 const mongoose = require('mongoose');
 const { CollectionType } = require('../models/collectionType');
 const { Area } = require('../models/area');
