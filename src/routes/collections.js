@@ -11,9 +11,9 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const collection = await Collection.find()
-  .populate('collectionType')
-  .populate('area')
-    // .select("-__v")
+    .select("-__v")
+    .populate('collectionType', '-__v')
+    .populate('area', '-__v')
     .sort("description");
   res.send(collection);
 });

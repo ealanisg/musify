@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const config = require("config");
 const jwt = require("jsonwebtoken");
 const Joi = require("joi");
@@ -26,7 +27,7 @@ const userSchema = new mongoose.Schema({
   },
   roles: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Roles',
+    ref: 'Role',
     required: true
   }]
 });
@@ -62,7 +63,7 @@ async function validateUser(user) {
       .required(),
     rolesId: Joi.array().items(
       Joi.object().keys({
-        roleId: Joi.objectId().required()
+        id: Joi.objectId().required()
       })
     ).required()
   });
@@ -72,15 +73,14 @@ async function validateUser(user) {
     return { error: validation.error.details[0].message };
   }
 
-  const exists = await User.findOne({ email: req.body.email });
+  const exists = await User.findOne({ email: user.email });
   if (exists) return { error: 'User already registered' };
   const roles = await Role.find({
-    '_id': { $in: user.rolesId}
+    '_id': { $in: user.rolesId.map((r) => r.id) }
   });
   if(roles.length != user.rolesId.length) {
     return { error: 'Roles inconsistentes' };
   }
-
   user['roles'] = roles;
   const value = _.omit(user, ['rolesId']);
   return { value };

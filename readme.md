@@ -12,8 +12,8 @@ MongoDb
 ## Work in Progress
 ### Backend Modules
 [X] REST Api \
-[-] Users \
-[-] Authentication \
+[X] Users \
+[-] Authentication (Token) \
 [-] CRUD Catalogs \
 [X] Areas \
 [X] Roles \
@@ -21,4 +21,9 @@ MongoDb
 [-] Cataloging \
 [-] Items Schemas (Inventory, Conservative, Catalographic, Digitalization, Relations, Events, Warehouse storage)
 ### Frontend Modules
-Pending
+(Pending, TBD)
+
+
+> Current working in:
+* Ok roles saving on user
+* Next step activate authentication for create unit tests

@@ -13,8 +13,9 @@ router.get("/me", auth, async (req, res) => {
 
 router.get("/", async (req, res) => {
   const user = await User.find()
-    .select("-__v, -password")
-    .sort("description");
+    .select("-__v -password")
+    .populate('roles', '-__v')
+    .sort("name");
   res.send(user);
 });
 
@@ -26,10 +27,10 @@ router.delete("/:id", [auth, validateObjectId], async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { value, error } = validate(req.body);
+  const { value, error } = await validate(req.body);
   if (error) return res.status(400).send(error);
 
-  user = new User(_.pick(req.body, ["name", "email", "password"]));
+  user = new User(_.pick(value, ["name", "email", "password", "roles"]));
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
   await user.save();
