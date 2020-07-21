@@ -37,7 +37,8 @@ userSchema.methods.generateAuthToken = function () {
     {
       _id: this._id,
       name: this.name,
-      email: this.email
+      email: this.email,
+      roles: this.roles.map((r) => r.description)
     },
     config.get("jwtPrivateKey")
   );
@@ -69,7 +70,7 @@ async function validateUser(user) {
   });
 
   const validation = schema.validate(user);
-  if(validation.error) {
+  if (validation.error) {
     return { error: validation.error.details[0].message };
   }
 
@@ -78,7 +79,7 @@ async function validateUser(user) {
   const roles = await Role.find({
     '_id': { $in: user.rolesId.map((r) => r.id) }
   });
-  if(roles.length != user.rolesId.length) {
+  if (roles.length != user.rolesId.length) {
     return { error: 'Roles inconsistentes' };
   }
   user['roles'] = roles;

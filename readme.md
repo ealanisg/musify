@@ -14,9 +14,9 @@ MongoDb
 [X] REST Api \
 [X] Users \
 [-] Authentication (Token) \
+[-] Roles \
 [-] CRUD Catalogs \
 [X] Areas \
-[X] Roles \
 [X] Catalog Types \
 [-] Cataloging \
 [-] Items Schemas (Inventory, Conservative, Catalographic, Digitalization, Relations, Events, Warehouse storage)
@@ -25,5 +25,5 @@ MongoDb
 
 
 > Current working in:
-* Ok roles saving on user
+* Ok roles saving on user as description
 * Next step activate authentication for create unit tests
